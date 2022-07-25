@@ -2,7 +2,7 @@ import { Configuration, App } from '@midwayjs/decorator';
 import * as koa from '@midwayjs/koa';
 import * as validate from '@midwayjs/validate';
 import * as info from '@midwayjs/info';
-import * as orm from '@midwayjs/orm';
+import * as orm from '@midwayjs/typeorm';
 import { join } from 'path';
 import * as jwt from '@midwayjs/jwt';
 // import { DefaultErrorFilter } from './filter/default.filter';

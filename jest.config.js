@@ -4,4 +4,3 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/test/fixtures'],
   coveragePathIgnorePatterns: ['<rootDir>/test/'],
 };
-jest.setTimeout(1000);

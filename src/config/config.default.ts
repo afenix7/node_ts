@@ -7,12 +7,16 @@ export default {
   koa: {
     port: 7001,
   },
-  orm: {
-    type: 'sqlite',
-    database: ':memory:',
-    dropSchema: true,
-    entities: [UserEntity],
-    synchronize: true,
-    logging: false,
+  typeorm: {
+    dataSource: {
+      default: {
+        type: 'sqlite',
+        database: ':memory:',
+        dropSchema: true,
+        entities: [UserEntity],
+        synchronize: true,
+        logging: false,
+      },
+    },
   },
 } as MidwayConfig;

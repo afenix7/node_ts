@@ -7,11 +7,12 @@ import { JwtService } from '@midwayjs/jwt';
 export class UserController {
   @Inject()
   jwtService: JwtService;
+  @Inject()
+  userModel: UserModel;
 
   @Post('/mockSave')
   async mockSave() {
-    const userModel = new UserModel();
-    await userModel.saveUser({
+    await this.userModel.saveUser({
       id: 0,
       username: 'mockedName',
       password: '12345678901',
@@ -25,18 +26,19 @@ export class UserController {
     result: string;
     data: { token: string } | null;
   }> {
-    const userModel = new UserModel();
     try {
-      const userInfo = await userModel.getUserByUsernameAndPassword(
+      const userInfo = await this.userModel.getUserByUsernameAndPassword(
         user.username,
         user.password
       );
-      console.log(userInfo);
       const token = await this.jwtService.sign(
-        { username: userInfo.username, password: userInfo.password },
-        'somekey'
+        {
+          username: userInfo.username,
+          password: userInfo.password,
+        },
+        'secret',
+        { expiresIn: '12h' }
       );
-      console.log(token);
       return {
         code: 200,
         result: 'success',

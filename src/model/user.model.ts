@@ -1,7 +1,9 @@
-import { InjectEntityModel } from '@midwayjs/orm';
+import { Provide } from '@midwayjs/decorator';
+import { InjectEntityModel } from '@midwayjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from '../entity/user.entity';
 
+@Provide()
 export class UserModel {
   @InjectEntityModel(UserEntity)
   userRepo: Repository<UserEntity>;

@@ -1,6 +1,6 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
-import { EntityModel } from '@midwayjs/orm';
-@EntityModel()
+import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
+
+@Entity('user')
 export class UserEntity {
   @PrimaryGeneratedColumn({
     type: 'int',
